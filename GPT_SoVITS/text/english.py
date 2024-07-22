@@ -15,12 +15,20 @@ from nltk.tokenize import TweetTokenizer
 word_tokenize = TweetTokenizer().tokenize
 from nltk import pos_tag
 
-current_file_path = os.path.dirname(__file__)
-CMU_DICT_PATH = os.path.join(current_file_path, "cmudict.rep")
-CMU_DICT_FAST_PATH = os.path.join(current_file_path, "cmudict-fast.rep")
-CMU_DICT_HOT_PATH = os.path.join(current_file_path, "engdict-hot.rep")
-CACHE_PATH = os.path.join(current_file_path, "engdict_cache.pickle")
-NAMECACHE_PATH = os.path.join(current_file_path, "namedict_cache.pickle")
+#current_file_path = os.path.dirname(__file__)
+#CMU_DICT_PATH = os.path.join(current_file_path, "cmudict.rep")
+#CMU_DICT_FAST_PATH = os.path.join(current_file_path, "cmudict-fast.rep")
+#CMU_DICT_HOT_PATH = os.path.join(current_file_path, "engdict-hot.rep")
+#CACHE_PATH = os.path.join(current_file_path, "engdict_cache.pickle")
+#NAMECACHE_PATH = os.path.join(current_file_path, "namedict_cache.pickle")
+CMU_DICT_PATH = "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/text/cmudict.rep"
+CMU_DICT_FAST_PATH = "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/text/cmudict-fast.rep"
+CMU_DICT_HOT_PATH = "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/text/engdict-hot.rep"
+CACHE_PATH = "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/text/engdict_cache.pickle"
+NAMECACHE_PATH = "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/text/namedict_cache.pickle"
+
+
+
 
 arpa = {
     "AH0",

@@ -11,10 +11,11 @@ from text.zh_normalization.text_normlization import TextNormalizer
 
 normalizer = lambda x: cn2an.transform(x, "an2cn")
 
-current_file_path = os.path.dirname(__file__)
+#current_file_path = os.path.dirname(__file__)
 pinyin_to_symbol_map = {
     line.split("\t")[0]: line.strip().split("\t")[1]
-    for line in open(os.path.join(current_file_path, "opencpop-strict.txt")).readlines()
+    #for line in open(os.path.join(current_file_path, "opencpop-strict.txt")).readlines()
+    for line in open("/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/text/opencpop-strict.txt").readlines()
 }
 
 import jieba_fast.posseg as psg
