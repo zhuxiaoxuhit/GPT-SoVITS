@@ -196,12 +196,13 @@ def get_hparams(init=True, stage=1):
         "-c",
         "--config",
         type=str,
-        default="./configs/s2.json",
+        default="/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/configs/s2_yue2kh.json",
         help="JSON file for configuration",
     )
     parser.add_argument(
         "-p", "--pretrain", type=str, required=False, default=None, help="pretrain dir"
     )
+    parser.add_argument("--local_rank", type=int, default=1, help="local rank.",)
     parser.add_argument(
         "-rs",
         "--resume_step",

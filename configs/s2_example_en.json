@@ -21,7 +21,7 @@
         "text_low_lr_rate": 0.4,
         "pretrained_s2G": "GPT_SoVITS/pretrained_models/s2G488k.pth",
         "pretrained_s2D": "GPT_SoVITS/pretrained_models/s2D488k.pth",
-        "if_save_latest": true,
+        "if_save_latest": false,
         "if_save_every_weights": true,
         "save_every_epoch": 4,
         "gpu_numbers": "0"

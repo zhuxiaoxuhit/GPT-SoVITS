@@ -1,22 +1,34 @@
 # -*- coding: utf-8 -*-
 
 import sys,os
-inp_text=                           os.environ.get("inp_text")
-inp_wav_dir=                        os.environ.get("inp_wav_dir")
-exp_name=                           os.environ.get("exp_name")
-i_part=                             os.environ.get("i_part")
-all_parts=                          os.environ.get("all_parts")
-os.environ["CUDA_VISIBLE_DEVICES"]= os.environ.get("_CUDA_VISIBLE_DEVICES")
+#inp_text=                           os.environ.get("inp_text")
+#inp_wav_dir=                        os.environ.get("inp_wav_dir")
+#exp_name=                           os.environ.get("exp_name")
+#i_part=                             os.environ.get("i_part")
+#all_parts=                          os.environ.get("all_parts")
+#os.environ["CUDA_VISIBLE_DEVICES"]= os.environ.get("_CUDA_VISIBLE_DEVICES")
+#from feature_extractor import cnhubert
+#opt_dir=                            os.environ.get("opt_dir")
+#cnhubert.cnhubert_base_path=                os.environ.get("cnhubert_base_dir")
+#is_half=eval(os.environ.get("is_half","True"))
+
+inp_text='/mnt/share_afs/cantonese/processed/script-gs.lst'                        #os.environ.get("inp_text")
+inp_wav_dir='/mnt/share_afs/cantonese/processed/processed_waves'                        #os.environ.get("inp_wav_dir")
+#exp_name='yue2kh'                           #os.environ.get("exp_name")
+#i_part=                             #os.environ.get("i_part")
+#all_parts=                          #os.environ.get("all_parts")
+#os.environ["CUDA_VISIBLE_DEVICES"]= #os.environ.get("_CUDA_VISIBLE_DEVICES")
 from feature_extractor import cnhubert
-opt_dir=                            os.environ.get("opt_dir")
-cnhubert.cnhubert_base_path=                os.environ.get("cnhubert_base_dir")
-is_half=eval(os.environ.get("is_half","True"))
+opt_dir="/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/logs/yue2kh"                            #os.environ.get("opt_dir")
+cnhubert.cnhubert_base_path="/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/pretrained_models/chinese-hubert-base"        #os.environ.get("cnhubert_base_dir")
+is_half=False
+#is_half=eval(os.environ.get("is_half","True"))
 
 import pdb,traceback,numpy as np,logging
 from scipy.io import wavfile
 import librosa,torch
-now_dir = os.getcwd()
-sys.path.append(now_dir)
+#now_dir = os.getcwd()
+#sys.path.append(now_dir)
 from tools.my_utils import load_audio
 
 # from config import cnhubert_base_path
@@ -36,9 +48,9 @@ def my_save(fea,path):#####fix issue: torch.save doesn't support chinese path
     dir=os.path.dirname(path)
     name=os.path.basename(path)
     # tmp_path="%s/%s%s.pth"%(dir,ttime(),i_part)
-    tmp_path="%s%s.pth"%(ttime(),i_part)
-    torch.save(fea,tmp_path)
-    shutil.move(tmp_path,"%s/%s"%(dir,name))
+    #tmp_path="%s%s.pth"%(ttime(),i_part)
+    torch.save(fea, "%s/%s"%(dir,name))
+    #shutil.move(tmp_path,"%s/%s"%(dir,name))
 
 hubert_dir="%s/4-cnhubert"%(opt_dir)
 wav32dir="%s/5-wav32k"%(opt_dir)
@@ -95,7 +107,8 @@ def name2go(wav_name,wav_path):
 with open(inp_text,"r",encoding="utf8")as f:
     lines=f.read().strip("\n").split("\n")
 
-for line in lines[int(i_part)::int(all_parts)]:
+#for line in lines[int(i_part)::int(all_parts)]:
+for line in lines:
     try:
         # wav_name,text=line.split("\t")
         wav_name, spk_name, language, text = line.split("|")

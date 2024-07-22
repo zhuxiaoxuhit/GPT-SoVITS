@@ -3,7 +3,8 @@ import os
 import soundfile as sf
 
 from tools.i18n.i18n import I18nAuto
-from GPT_SoVITS.inference_webui import change_gpt_weights, change_sovits_weights, get_tts_wav
+#from GPT_SoVITS.inference_webui import change_gpt_weights, change_sovits_weights, get_tts_wav
+from inference_webui import change_gpt_weights, change_sovits_weights, get_tts_wav, get_tts_wav2
 
 i18n = I18nAuto()
 
@@ -20,13 +21,23 @@ def synthesize(GPT_model_path, SoVITS_model_path, ref_audio_path, ref_text_path,
     change_gpt_weights(gpt_path=GPT_model_path)
     change_sovits_weights(sovits_path=SoVITS_model_path)
 
+    ## Synthesize audio
+    #synthesis_result = get_tts_wav(ref_wav_path=ref_audio_path, 
+    #                               prompt_text=ref_text, 
+    #                               prompt_language=i18n(ref_language), 
+    #                               text=target_text, 
+    #                               text_language=i18n(target_language), top_p=1, temperature=1)
+
     # Synthesize audio
-    synthesis_result = get_tts_wav(ref_wav_path=ref_audio_path, 
+    synthesis_result = get_tts_wav2(ref_wav_path=ref_audio_path, 
                                    prompt_text=ref_text, 
                                    prompt_language=i18n(ref_language), 
                                    text=target_text, 
                                    text_language=i18n(target_language), top_p=1, temperature=1)
     
+
+
+
     result_list = list(synthesis_result)
 
     if result_list:
@@ -52,4 +63,4 @@ def main():
 
 if __name__ == '__main__':
     main()
-
+# python --gpt_model --sovits_model --ref_audio --ref_text --ref_language --target_text --target_language --output_path

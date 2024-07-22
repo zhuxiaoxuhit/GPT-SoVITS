@@ -1,0 +1,40 @@
+data:
+  max_eval_sample: 8
+  max_sec: 54
+  num_workers: 4
+  pad_val: 1024
+inference:
+  top_k: 5
+model:
+  EOS: 1024
+  dropout: 0
+  embedding_dim: 512
+  head: 16
+  hidden_dim: 512
+  linear_units: 2048
+  n_layer: 24
+  phoneme_vocab_size: 512
+  random_bert: 0
+  vocab_size: 1025
+optimizer:
+  decay_steps: 40000
+  lr: 0.01
+  lr_end: 0.0001
+  lr_init: 1.0e-05
+  warmup_steps: 2000
+output_dir: /mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/yue2kh_single/logs_s1
+pretrained_s1: 
+train:
+  batch_size: 16
+  epochs: 100
+  exp_name: yue2kh
+  gradient_clip: 1.0
+  half_weights_save_dir: /mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/GPT_single_weights
+  if_dpo: false
+  if_save_every_weights: true
+  if_save_latest: false
+  precision: '32'
+  save_every_n_epoch: 1
+  seed: 1234
+train_phoneme_path: /mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/yue2kh_single/2-name2text.txt
+train_semantic_path: /mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/yue2kh_single/6-name2semantic.tsv

@@ -126,10 +126,13 @@ class Text2SemanticDataset(Dataset):
             # 先依次遍历
             # get str
             item_name = self.semantic_data.iloc[i,0]
-            # print(self.phoneme_data)
+            #print("===self.phoneme_data===")
+            #print(len(self.phoneme_data))
             try:
                 phoneme, word2ph, text = self.phoneme_data[item_name]
             except Exception:
+                print("===item_name===")
+                print(item_name)
                 traceback.print_exc()
                 # print(f"{item_name} not in self.phoneme_data !")
                 num_not_in += 1
@@ -152,7 +155,7 @@ class Text2SemanticDataset(Dataset):
                 phoneme_ids = cleaned_text_to_sequence(phoneme)
             except:
                 traceback.print_exc()
-                # print(f"{item_name} not in self.phoneme_data !")
+                print(f"{item_name} not in self.phoneme_data !")
                 num_not_in += 1
                 continue
             # if len(phoneme_ids) >400:###########2：改为恒定限制为semantic/2.5就行
