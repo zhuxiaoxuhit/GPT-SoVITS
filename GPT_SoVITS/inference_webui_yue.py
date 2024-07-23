@@ -29,12 +29,13 @@ else:
     gpt_path = os.environ.get(
         "gpt_path", "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/GPT_single_weights/yue2kh-e7.ckpt")
 
+#sovits_path = os.environ.get("sovits_path", "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/SoVITS_weights/yue2kh_e16_s7920.pth")
 if os.path.exists("./sweight.txt"):
     with open("./sweight.txt", 'r', encoding="utf-8") as file:
         sweight_data = file.read()
         sovits_path = os.environ.get("sovits_path", sweight_data)
 else:
-    sovits_path = os.environ.get("sovits_path", "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/SoVITS_weights/yue2kh_e16_s7920.pth")
+    sovits_path = os.environ.get("sovits_path", "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/s2G488k_Emb644_ft_ca208w+en75w/SoVITS_weights/s2G488k_Emb644_ft_ca208w+en75w_e3_s2616.pth")
 #sovits_path = os.environ.get("sovits_path", "pretrained_models/s2G488k.pth")
 #sovits_path = os.environ.get("sovits_path", "GPT_SoVITS/pretrained_models/s2G488k.pth")
 # gpt_path = os.environ.get(
@@ -146,6 +147,7 @@ def change_sovits_weights(sovits_path):
     global vq_model, hps
     dict_s2 = torch.load(sovits_path, map_location="cpu")
     hps = dict_s2["config"]
+    print(hps)
     hps = DictToAttrRecursive(hps)
     hps.model.semantic_frame_rate = "25hz"
     vq_model = SynthesizerTrn(
@@ -694,26 +696,26 @@ def get_tts_wav_s2(ref_wav_path, prompt_text, prompt_language, text, text_langua
         all_phoneme_len = torch.tensor([all_phoneme_ids.shape[-1]]).to(device)
 
         t2 = ttime()
-        with torch.no_grad():
-            # pred_semantic = t2s_model.model.infer(
-            pred_semantic, idx = t2s_model.model.infer_panel(
-                all_phoneme_ids,
-                all_phoneme_len,
-                None if ref_free else prompt,
-                bert,
-                # prompt_phone_len=ph_offset,
-                top_k=top_k,
-                top_p=top_p,
-                temperature=temperature,
-                early_stop_num=hz * max_sec,
-            )
-            print("===s1 ids===")
+        #with torch.no_grad():
+        #    # pred_semantic = t2s_model.model.infer(
+        #    pred_semantic, idx = t2s_model.model.infer_panel(
+        #        all_phoneme_ids,
+        #        all_phoneme_len,
+        #        None if ref_free else prompt,
+        #        bert,
+        #        # prompt_phone_len=ph_offset,
+        #        top_k=top_k,
+        #        top_p=top_p,
+        #        temperature=temperature,
+        #        early_stop_num=hz * max_sec,
+        #    )
+        #    print("===s1 ids===")
         t3 = ttime()
         # print(pred_semantic.shape,idx)
-        pred_semantic = pred_semantic[:, -idx:].unsqueeze(
-            0
-        )  # .unsqueeze(0)#mq要多unsqueeze一次
-        pred_semantic = prompt
+        #pred_semantic = pred_semantic[:, -idx:].unsqueeze(
+        #    0
+        #)  # .unsqueeze(0)#mq要多unsqueeze一次
+        pred_semantic = prompt.unsqueeze(0)
         print("pred_semantic")
         print(pred_semantic.shape)
         print(type(pred_semantic))

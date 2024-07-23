@@ -545,24 +545,25 @@ def get_tts_wav2(ref_wav_path, prompt_text, prompt_language, text, text_language
         all_phoneme_len = torch.tensor([all_phoneme_ids.shape[-1]]).to(device)
 
         t2 = ttime()
-        with torch.no_grad():
-            # pred_semantic = t2s_model.model.infer(
-            pred_semantic, idx = t2s_model.model.infer_panel(
-                all_phoneme_ids,
-                all_phoneme_len,
-                None if ref_free else prompt,
-                bert,
-                # prompt_phone_len=ph_offset,
-                top_k=top_k,
-                top_p=top_p,
-                temperature=temperature,
-                early_stop_num=hz * max_sec,
-            )
+        #with torch.no_grad():
+        #    # pred_semantic = t2s_model.model.infer(
+        #    pred_semantic, idx = t2s_model.model.infer_panel(
+        #        all_phoneme_ids,
+        #        all_phoneme_len,
+        #        None if ref_free else prompt,
+        #        bert,
+        #        # prompt_phone_len=ph_offset,
+        #        top_k=top_k,
+        #        top_p=top_p,
+        #        temperature=temperature,
+        #        early_stop_num=hz * max_sec,
+        #    )
         t3 = ttime()
         # print(pred_semantic.shape,idx)
-        pred_semantic = pred_semantic[:, -idx:].unsqueeze(
-            0
-        )  # .unsqueeze(0)#mq要多unsqueeze一次
+        #pred_semantic = pred_semantic[:, -idx:].unsqueeze(
+        #    0
+        #)  # .unsqueeze(0)#mq要多unsqueeze一次
+        pred_semantic = prompt  # prompt 是refer -> hubert -> vq.extract 
         print("pred_semantic")
         print(pred_semantic.shape)
         print(type(pred_semantic))

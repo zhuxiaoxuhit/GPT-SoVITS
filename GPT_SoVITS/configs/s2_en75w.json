@@ -19,8 +19,8 @@
         "c_mel": 45,
         "c_kl": 1.0,
         "text_low_lr_rate": 1,
-        "pretrained_s2G": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/pretrained_models/s2G488k_Emb644.pth",
-        "pretrained_s2D": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/pretrained_models/s2D488k.pth",
+        "pretrained_s2G": "",
+        "pretrained_s2D": "",
         "if_save_latest": false,
         "if_save_every_weights": true,
         "save_every_epoch": 1,
@@ -38,7 +38,7 @@
         "add_blank": true,
         "n_speakers": 300,
         "cleaned_text": true,
-        "exp_dir": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/s2G488k_Emb644_ft_ca208w+en75w"
+        "exp_dir": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/en75w"
     },
     "model": {
         "inter_channels": 192,
@@ -92,8 +92,8 @@
         "semantic_frame_rate": "25hz",
         "freeze_quantizer": false
     },
-    "s2_ckpt_dir": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/s2G488k_Emb644_ft_ca208w+en75w",
+    "s2_ckpt_dir": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/en75w",
     "content_module": "cnhubert",
-    "save_weight_dir": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/s2G488k_Emb644_ft_ca208w+en75w/SoVITS_weights",
-    "name": "s2G488k_Emb644_ft_ca208w+en75w"
+    "save_weight_dir": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/en75w/SoVITS_weights",
+    "name": "en75w"
 }

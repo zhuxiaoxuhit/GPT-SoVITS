@@ -21,7 +21,7 @@ config_path=$1
 
 # python 3.8
 #python -m launch --nnodes $WORLD_SIZE --node_rank $RANK --master_addr $MASTER_ADDR --nproc_per_node 8 --master_port $MASTER_PORT s2_train_ddp.py
-python -m launch --nnodes $WORLD_SIZE --node_rank $RANK --master_addr $MASTER_ADDR --nproc_per_node 8 --master_port $MASTER_PORT s2_train_ddp1.py 
+python -m launch --nnodes $WORLD_SIZE --node_rank $RANK --master_addr $MASTER_ADDR --nproc_per_node 8 --master_port $MASTER_PORT s2_train_ddp1_en75w.py 
 #$config_path 
 
 #>$logs_dir/s2.log 2>&1 

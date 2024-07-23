@@ -4,21 +4,21 @@
         "eval_interval": 500,
         "seed": 1234,
         "epochs": 200,
-        "learning_rate": 0.001,
+        "learning_rate": 0.0001,
         "betas": [
             0.8,
             0.99
         ],
         "eps": 1e-09,
-        "batch_size": 16,
+        "batch_size": 32,
         "fp16_run": true,
         "lr_decay": 0.999875,
         "segment_size": 20480,
         "init_lr_ratio": 1,
-        "warmup_epochs": 2,
+        "warmup_epochs": 0,
         "c_mel": 45,
         "c_kl": 1.0,
-        "text_low_lr_rate": 1,
+        "text_low_lr_rate": 0.4,
         "pretrained_s2G": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/pretrained_models/s2G488k_Emb644.pth",
         "pretrained_s2D": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/pretrained_models/s2D488k.pth",
         "if_save_latest": false,
@@ -38,7 +38,7 @@
         "add_blank": true,
         "n_speakers": 300,
         "cleaned_text": true,
-        "exp_dir": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/s2G488k_Emb644_ft_ca208w+en75w"
+        "exp_dir": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/0100037"
     },
     "model": {
         "inter_channels": 192,
@@ -92,8 +92,8 @@
         "semantic_frame_rate": "25hz",
         "freeze_quantizer": false
     },
-    "s2_ckpt_dir": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/s2G488k_Emb644_ft_ca208w+en75w",
+    "s2_ckpt_dir": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/0100037",
     "content_module": "cnhubert",
-    "save_weight_dir": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/s2G488k_Emb644_ft_ca208w+en75w/SoVITS_weights",
-    "name": "s2G488k_Emb644_ft_ca208w+en75w"
+    "save_weight_dir": "/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/logs/0100037/SoVITS_weights",
+    "name": "0100037"
 }

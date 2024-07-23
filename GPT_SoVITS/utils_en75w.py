@@ -71,6 +71,7 @@ def my_save(fea,path):#####fix issue: torch.save doesn't support chinese path
     name=os.path.basename(path)
     #tmp_path="%s.pth"%(ttime())
     torch.save(fea,"%s/%s"%(dir,name))
+    #shutil.move(tmp_path,"%s/%s"%(dir,name))
 
 def save_checkpoint(model, optimizer, learning_rate, iteration, checkpoint_path):
     logger.info(
@@ -189,14 +190,13 @@ def load_filepaths_and_text(filename, split="|"):
     return filepaths_and_text
 
 
-        #default="/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/configs/test.json",
 def get_hparams(init=True, stage=1, ):
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "-c",
         "--config",
         type=str,
-        default="/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/configs/s2G488k_Emb644_ft_ca208w.json",
+        default="/mnt/share_afs/share-workspace/zhuxiaoxu/code/GPT-SoVITS/GPT_SoVITS/configs/s2_en75w.json",
         help="JSON file for configuration",
     )
     parser.add_argument(
